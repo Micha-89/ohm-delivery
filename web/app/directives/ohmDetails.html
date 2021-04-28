@@ -1,0 +1,61 @@
+<div class="ohmDetailsBox">
+
+    <div class="ohmDetailsBoxChild">
+
+        <h3>Ohm info:</h3>
+
+        <table >
+
+            <tr>
+                <td class="titleInTableRow">Tracking Id</td>
+                <td>{{ ohmData.trackingId }}</td>
+            </tr>
+    
+            <tr>
+                <td class="titleInTableRow">Client Name</td>
+                <td>{{ ohmData.client.name }}</td>
+            </tr>
+    
+            <tr>
+                <td class="titleInTableRow">Client Address</td>
+                <td>{{ ohmData.client.address }}</td>
+            </tr>
+    
+            <tr>
+                <td class="titleInTableRow">Volts</td>
+                <td>{{ ohmData.description.volts }}</td>
+            </tr>
+    
+            <tr>
+                <td class="titleInTableRow">Amperes</td>
+                <td>{{ ohmData.description.amperes }}</td>
+            </tr>
+    
+        </table>
+    </div>
+    
+    <div class="ohmDetailsBoxChild">
+
+        <h3>Comment:</h3>
+
+        <p>{{ ohmData.comment }}</p>
+
+    </div>
+
+    <div class="ohmDetailsBoxChild">
+
+        <h3>History:</h3>
+
+        <ul class="statusHistoryOverview">
+            <li ng-repeat="status in ohmData.history">{{ status.state }}</li>
+        </ul>
+
+    </div>
+
+    <div class="ohmDetailsBoxChild">
+
+        <h3>Accept or decline delivery:</h3>
+
+    </div>
+
+</div>

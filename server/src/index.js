@@ -11,6 +11,11 @@ function serve() {
         res.send(ohm);
     })
 
+    app.get('/ohms/getByTrackingId/:trackingId', async (req, res) => {
+        const ohm = await Utils.getOhmByTrackingId(req.params.trackingId);
+        res.send(ohm);
+    })
+
     app.listen(3000, () => console.log('listening on port 3000'));
 }
 

@@ -18,4 +18,14 @@ async function getOhmById(id) {
     return ohm;
 }
 
+async function getOhmByTrackingId(trackingId) {
+  const _db = await db;
+  const ohm = _db.get('ohms')
+      .find({ trackingId })
+      .value()
+
+  return ohm;
+}
+
 module.exports = { getOhmById }
+module.exports = { getOhmByTrackingId }
