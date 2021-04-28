@@ -14,7 +14,7 @@
             <h2>Get shocked by the power</h2>
         </div>
         
-        <div ng-app="ohm-delivery" ng-controller="tracking">
+        <div ng-app="ohm-delivery" ng-controller="tracking" class="mainSection">
             <form ng-submit="sendData()">
                 <p>
                     <input id="tracking" type="text" ng-model="trackingId" placeholder="Enter your tracking id"/>
@@ -22,8 +22,8 @@
                 <p>
                     <button id="formBtn" type="submit" class="btn btn-primary">Submit</button>
                 </p>
-                <p>
-                    <span ng-if="errorMessage">{{errorMessage}}</span>
+                <p class="errorMessage">
+                    <span ng-if="errorMessage" >{{errorMessage}}</span>
                 </p>
             </form>
 

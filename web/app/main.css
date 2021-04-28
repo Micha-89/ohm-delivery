@@ -2,6 +2,7 @@ body {
     margin: 0px 0px 0px 0px;
     font-size: 16px;
     font-family: "Open Sans",serif;
+
 }
 
 .banner {
@@ -26,12 +27,24 @@ h2 {
 
 input {
     margin: 2em auto 1em;
-    width: 50%;
+    width: 200px;
 }
+
 p {
     text-align: center;
     margin: auto;
     line-height: 2.0;
+}
+
+.errorMessage {
+    margin-top: 15px;
+}
+
+.mainSection {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
 }
 
 .hidden {
@@ -67,4 +80,29 @@ p {
     border: 1px solid grey;
     padding: 5px;
 }
+
+.reasonRefused {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.acceptOrDeclineForm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.radioButtonsStatusUpdate {
+    display: flex;
+    flex: row;
+}
+
+.radioButtonsStatusUpdate div {
+    margin-right: 10px;
+}
+
+.inputDecline {
+    margin: 5px 0 10px 0;
+}
+
 

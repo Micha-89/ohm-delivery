@@ -27,5 +27,55 @@ async function getOhmByTrackingId(trackingId) {
   return ohm;
 }
 
-module.exports = { getOhmById }
-module.exports = { getOhmByTrackingId }
+
+async function declineOhm({trackingId, reasonDecline}) {
+  const _db = await db;
+  const history = _db.get('ohms')
+      .find({ trackingId })
+      .get('history')
+      .value()
+
+  history.push({
+    "state": 'REFUSED',
+    "at": "123456789",
+    "reasonDecline": reasonDecline
+  });
+
+  _db.get('ohms')
+    .find({ trackingId })
+    .assign({ history })
+    .write();
+
+  const ohm = _db.get('ohms')
+    .find({ trackingId })
+    .value()
+
+  return ohm;
+}
+
+async function acceptOhm(trackingId) {
+  const _db = await db;
+  const history = _db.get('ohms')
+      .find({ trackingId })
+      .get('history')
+      .value()
+
+  history.push({
+    "state": 'DELIVERED',
+    "at": "123456789"
+  });
+
+  _db.get('ohms')
+    .find({ trackingId })
+    .assign({ history })
+    .write();
+
+  const ohm = _db.get('ohms')
+    .find({ trackingId })
+    .value()
+
+  return ohm;
+}
+
+
+module.exports = { getOhmById, getOhmByTrackingId, declineOhm, acceptOhm };

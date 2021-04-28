@@ -29,6 +29,28 @@ ohmDelivery.controller("tracking", function($scope, $http) {
         $scope.trackingId = '';
     };
 
+    $scope.updateStatus = function() {
+        
+        if($scope.acceptedOrDeclined == 'declined'){
+            $http.put(`/ohms/decline/${$scope.ohmData.trackingId}`, { reasonDecline : $scope.declineMessage})
+            .then((response) => {
+                    $scope.ohmData = response.data;
+                }, (error) => {
+                    console.log(error);
+        });
+        }
+
+        if($scope.acceptedOrDeclined == 'accepted'){
+            $http.put(`/ohms/accept/${$scope.ohmData.trackingId}`)
+            .then((response) => {
+                    $scope.ohmData = response.data;
+                }, (error) => {
+                    console.log(error);
+        });
+        }
+
+    };
+
 });
 
 ohmDelivery.directive("ohmDetails", function() {

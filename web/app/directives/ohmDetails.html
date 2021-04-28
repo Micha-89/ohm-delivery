@@ -50,11 +50,37 @@
             <li ng-repeat="status in ohmData.history">{{ status.state }}</li>
         </ul>
 
+        <p ng-class="{ hidden: ohmData.history[ohmData.history.length-1].state !== 'REFUSED' }" class="reasonRefused">Reason refused: {{ ohmData.history[ohmData.history.length-1].reasonDecline }}</p>
+
     </div>
 
-    <div class="ohmDetailsBoxChild">
+    <div class="ohmDetailsBoxChild" ng-class="{ hidden: ohmData.history[ohmData.history.length-1].state !== 'IN_DELIVERY' }">
 
         <h3>Accept or decline delivery:</h3>
+
+        <form ng-submit="updateStatus()" class="acceptOrDeclineForm">
+
+            <div class="radioButtonsStatusUpdate" >
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="accepted" ng-model="acceptedOrDeclined" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Accept
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="declined" ng-model="acceptedOrDeclined">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Decline
+                    </label>
+                  </div>
+            </div>
+            
+
+            <input type="text" class="inputDecline" placeholder="Fill in reason for decline" ng-class="{ hidden: acceptedOrDeclined !== 'declined' }" ng-model="declineMessage">
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
 
     </div>
 
