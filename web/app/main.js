@@ -30,8 +30,11 @@ ohmDelivery.controller("tracking", function($scope, $http) {
     };
 
     $scope.updateStatus = function() {
-        
+
         if($scope.acceptedOrDeclined == 'declined'){
+            if($scope.declineMessage.length < 1) {
+                return;
+            }
             $http.put(`/ohms/decline/${$scope.ohmData.trackingId}`, { reasonDecline : $scope.declineMessage})
             .then((response) => {
                     $scope.ohmData = response.data;
